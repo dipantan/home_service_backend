@@ -2,10 +2,10 @@
 error_reporting(E_ALL ^ E_WARNING);
 include_once __DIR__ . '../utils/index.php';
 
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db = "home_service";
+$host = "if0-35224575-homeservice.clns31ngmx5u.ap-south-1.rds.amazonaws.com";
+$user = "if0_35224575";
+$pass = "AvwKWif599G";
+$db = "if0_35224575_homeservice";
 $conn = mysqli_connect($host, $user, $pass, $db);
 if (!$conn) {
     die("mysqli errro: " . mysqli_connect_error());

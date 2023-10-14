@@ -1,5 +1,5 @@
 <?php
-include_once('../../vendor/autoload.php');
+include_once "../../vendor/autoload.php";
 include_once "../../db/index.php";
 include_once "../../utils/index.php";
 
