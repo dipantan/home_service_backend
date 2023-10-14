@@ -1,23 +1,24 @@
-name: Deploy to EC2 via SSH
+name: Push-to-EC2
 
+# Trigger deployment only on push to master branch
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   deploy:
+    name: Deploy to EC2 on master branch push
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout the files
+        uses: actions/checkout@v2
 
-    - name: Set up SSH
-      uses: webfactory/ssh-agent@v0.8.0
-      with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-    - name: Deploy code to EC2
-      run: |
-        ssh ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "cd /var/www/html && git pull"
+      - name: Deploy to Server 1
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.SSH_HOST }}
+          REMOTE_USER: ${{ secrets.SSH_USERNAME }}
+          TARGET: ${{ secrets.TARGET_DIRECTORY }}
