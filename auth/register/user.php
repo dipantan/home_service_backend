@@ -61,6 +61,7 @@ $data = new stdClass();
 $data->name =  $name;
 $data->email =  $email;
 $data->phone =  $phone;
+$data->type =  'user';
 
 $tokenPayload = [
     "data" => $data,

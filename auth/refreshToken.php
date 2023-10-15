@@ -17,7 +17,7 @@ if (!isset($email) || empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL
     return;
 }
 
-$sql = "select email, phone, name from users where email='$email'";
+$sql = "select email, phone, name, type from users where email='$email'";
 $result = mysqli_query($conn, $sql);
 
 if ($result) {

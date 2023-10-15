@@ -38,6 +38,7 @@ $data = new stdClass();
 $data->name =  $user_decoded->data[0]->name;
 $data->email =  $user_decoded->data[0]->email;
 $data->phone =  $user_decoded->data[0]->phone;
+$data->type =  $user_decoded->data[0]->type;
 
 $tokenPayload = [
     "data" => $data,
