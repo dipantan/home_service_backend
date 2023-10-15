@@ -47,4 +47,6 @@ $tokenPayload = [
 $jwt = JWT::encode($tokenPayload, $key, 'HS256');
 
 // Return the JWT token as a JSON response
-echo sendJson($jwt, "Success", false);
+$data = ["user" => $data, "token" => $jwt];
+
+echo sendJson($data, "Success", false);

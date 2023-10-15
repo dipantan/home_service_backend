@@ -47,9 +47,9 @@ if (empty($password) || !is_valid_6_char_alphanumeric_password($password)) {
 $password = password_hash($password, PASSWORD_DEFAULT);
 
 $result = json_decode(dbQuery(
-    "insert into users (name,email,password,phone)
+    "insert into users (name,email,password,phone,type)
         values
-    ('$name','$email','$password','$phone')"
+    ('$name','$email','$password','$phone',user)"
 ));
 
 if ($result->error) {
@@ -69,6 +69,6 @@ $tokenPayload = [
 
 $jwt = JWT::encode($tokenPayload, $key, 'HS256');
 
-$result->data = $jwt;
+$result->data = ["user" => $data, "token" => $jwt];
 
 echo json_encode($result);
