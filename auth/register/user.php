@@ -49,7 +49,7 @@ $password = password_hash($password, PASSWORD_DEFAULT);
 $result = json_decode(dbQuery(
     "insert into users (name,email,password,phone,type)
         values
-    ('$name','$email','$password','$phone',user)"
+    ('$name','$email','$password','$phone','user')"
 ));
 
 if ($result->error) {
