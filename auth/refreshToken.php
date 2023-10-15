@@ -28,7 +28,7 @@ if ($result) {
             "exp" => time() + 7776000, // Token expires in 90 days
         ];
         $jwt = JWT::encode($tokenPayload, $key, 'HS256');
-        $dat = ["user" => $data, "token" => $jwt];
+        $data = ["user" => $data, "token" => $jwt];
         echo sendJson($data, "Success", false);
     } else {
         echo json_encode(["error" => true, "message" => "User not found"]);
