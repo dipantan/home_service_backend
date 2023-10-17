@@ -3,4 +3,4 @@ Options +MultiViews
 AddHandler php5-script php
 AddType text/html php
 RewriteRule .* - [e=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-RedirectMatch 403 ^/assets/?$
+RedirectMatch 403 ^/assets/*?$
