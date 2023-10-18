@@ -48,32 +48,41 @@ if (empty($password) || !is_valid_6_char_alphanumeric_password($password)) {
     return;
 }
 
-$password = password_hash($password, PASSWORD_DEFAULT);
+$categories = dbQuery("select name from services");
 
-$result = json_decode(dbQuery(
-    "insert into users (`name`,`email`,`password`,`phone`,`type`)
-        values
-    ('$name','$email','$password','$phone','user')"
-));
+echo json_encode($categories);
 
-if ($result->error) {
-    echo json_encode($result);
-    return;
+if (empty($category)) {
 }
 
-$data = new stdClass();
-$data->name =  $name;
-$data->email =  $email;
-$data->phone =  $phone;
-$data->type =  'user';
 
-$tokenPayload = [
-    "data" => $data,
-    "exp" => time() + 7776000, // Token expires in 90 days
-];
 
-$jwt = JWT::encode($tokenPayload, $key, 'HS256');
+// $password = password_hash($password, PASSWORD_DEFAULT);
 
-$result->data = ["user" => $data, "token" => $jwt];
+// $result = json_decode(dbQuery(
+//     "insert into users (`name`,`email`,`password`,`phone`,`type`)
+//         values
+//     ('$name','$email','$password','$phone','user')"
+// ));
 
-echo json_encode($result);
+// if ($result->error) {
+//     echo json_encode($result);
+//     return;
+// }
+
+// $data = new stdClass();
+// $data->name =  $name;
+// $data->email =  $email;
+// $data->phone =  $phone;
+// $data->type =  'user';
+
+// $tokenPayload = [
+//     "data" => $data,
+//     "exp" => time() + 7776000, // Token expires in 90 days
+// ];
+
+// $jwt = JWT::encode($tokenPayload, $key, 'HS256');
+
+// $result->data = ["user" => $data, "token" => $jwt];
+
+// echo json_encode($result);
