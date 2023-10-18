@@ -48,9 +48,16 @@ if (empty($password) || !is_valid_6_char_alphanumeric_password($password)) {
     return;
 }
 
-$categories = dbQuery("select name from services");
+$categories = json_decode(dbQuery("select name from services"));
 
-echo json_encode($categories);
+if (array_search($category, $categories, true)) {
+    echo "found";
+} else {
+    echo "not found";
+}
+
+
+// echo json_encode($categories);
 
 if (empty($category)) {
 }
