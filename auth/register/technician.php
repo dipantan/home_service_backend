@@ -50,10 +50,10 @@ if (empty($password) || !is_valid_6_char_alphanumeric_password($password)) {
 
 $categories = json_decode(dbQuery("select name from services"));
 
-if (array_search($category, $categories->data, true)) {
-    echo "found";
-} else {
+if (empty($category) || !array_search($category, $categories->data, true)) {
     echo "not found";
+} else {
+    echo "found";
 }
 
 
