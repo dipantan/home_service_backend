@@ -11,8 +11,8 @@ $key = "7af31dd79c6ccc103cd31ed0beb3dcff207a981c8ba067e0903e1cee35e14c32";
 
 $data = json_decode(file_get_contents('php://input'));
 
-$username = $data->username;
-$password = $data->password;
+$username = mysqli_real_escape_string($conn, $data->username);
+$password = mysqli_real_escape_string($conn, $data->password);
 
 $user = dbQuery("select * from users where email='$username'");
 

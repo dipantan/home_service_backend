@@ -10,7 +10,7 @@ $key = "7af31dd79c6ccc103cd31ed0beb3dcff207a981c8ba067e0903e1cee35e14c32";
 
 $data = json_decode(file_get_contents('php://input'));
 
-$email = $data->email;
+$email = mysqli_real_escape_string($conn, $data->email);
 
 if (!isset($email) || empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     echo json_encode(["error" => true, "message" => "Provice a valid email"]);

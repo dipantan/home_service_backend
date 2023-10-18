@@ -8,10 +8,14 @@ use Firebase\JWT\Key;
 
 $data = json_decode(file_get_contents('php://input'));
 
-$name = $data->name;
-$email = $data->email;
-$phone = $data->phone;
-$password = $data->password;
+$name = mysqli_real_escape_string($conn, $data->name);
+$email = mysqli_real_escape_string($conn, $data->email);
+$phone = mysqli_real_escape_string($conn, $data->phone);
+$category = mysqli_real_escape_string($conn, $data->category);
+$speciality = mysqli_real_escape_string($conn, $data->speciality);
+$location = mysqli_real_escape_string($conn, $data->location);
+$image = mysqli_real_escape_string($conn, $data->image);
+$password = mysqli_real_escape_string($conn, $data->password);
 
 // Set your secret key for token encoding
 $key = "7af31dd79c6ccc103cd31ed0beb3dcff207a981c8ba067e0903e1cee35e14c32";
