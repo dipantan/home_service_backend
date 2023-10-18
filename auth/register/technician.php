@@ -56,7 +56,7 @@ if (empty($category) || !array_search($category, $categories->data, true)) {
     // echo "found";
 }
 
-print_r($categories);
+print_r($categories->data);
 
 // echo json_encode($categories);
 
